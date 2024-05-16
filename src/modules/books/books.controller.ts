@@ -5,6 +5,7 @@ import {
   Get,
   HttpCode,
   HttpStatus,
+  Logger,
   Param,
   Post,
   Put,
@@ -25,12 +26,14 @@ import {
 @Controller('books')
 export class BooksController {
   constructor(private booksService: BooksService) {}
+  private readonly logger = new Logger(BooksController.name);
 
   @HttpCode(HttpStatus.OK)
   @Get()
   @ApiOkResponse({ status: 200, description: 'The records succesfully found' })
   @ApiResponse({ status: 500, description: 'Something went wrong' })
   async getBooks() {
+    this.logger.log('Handling GET request /books');
     return this.booksService.getMany();
   }
 
@@ -45,6 +48,7 @@ export class BooksController {
     required: true,
   })
   async getBookByID(@Param('id') id: number) {
+    this.logger.log(`Handling GET request /books/${id}`);
     return this.booksService.getByID(id);
   }
 
@@ -63,6 +67,7 @@ export class BooksController {
     }),
   )
   async createBook(@Body() bookDTO: BookCreatingDTO) {
+    this.logger.log('Handling POST request /books');
     return this.booksService.createBook(bookDTO);
   }
 
@@ -85,6 +90,7 @@ export class BooksController {
     @Param('id') id: number,
     @Body() bookDTO: BookUpdatingDTO,
   ) {
+    this.logger.log(`Handling PUT request /books/${id}`);
     return this.booksService.updateBookByID(id, bookDTO);
   }
 
@@ -102,6 +108,7 @@ export class BooksController {
     required: true,
   })
   async deleteBookByID(@Param('id') id: number) {
+    this.logger.log(`Hadnling DELETE request /books/${id}`);
     return this.booksService.deleteByID(id);
   }
 }
