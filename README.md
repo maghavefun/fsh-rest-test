@@ -1,5 +1,3 @@
-## Description
-
 ## Installation
 
 ```bash
@@ -21,20 +19,47 @@ $ npm run start:prod
 
 ## Runnning the app in docker container
 
+Запуск проекта с ребилдом контейнера в случае некоторых изменений проекта
+Иначе запускать без флага --build
+
 ```bash
-## Запуск проекта с ребилдом контейнера в случае некоторых изменений проекта
-## Иначе запускать без флага --build
 docker compose up --build
 ```
 
+Остановить проект в контейнерах докера с удалением указанных volumes в docker-compose.yml
+
 ```bash
-## Остановить проект в контейнерах докера с удалением указанных volumes в docker-compose.yml
 docker compose down -v
 ```
 
+Перезапустить контейнеры
+
 ```bash
-## Перезапустить контейнеры
 docker compose restart
+```
+
+## Inspect current db
+
+Открыть текущую базу данных в drizzle studio
+
+```bash
+npm run inspect:db
+```
+
+Drizzle Studio будет доступно здесь [LINK](https://local.drizzle.studio)
+
+## Migration
+
+Создать миграции на основе описанных схем в modules/drizzle/shema.ts
+
+```bash
+npm run migration:generate
+```
+
+Применить созданные миграции к текущей базе данных
+
+```bash
+npm run migration:migrate
 ```
 
 ## Test
