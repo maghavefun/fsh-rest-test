@@ -1,10 +1,19 @@
-## Installation
+## Клонировать проект
+
+```bash
+git clone https://github.com/maghavefun/fsh-rest-test.git
+```
+
+## Локальная установка зависимостей(не рекомендуется)
 
 ```bash
 $ npm install
 ```
 
-## Running the app in local environment
+Перед запуском локально или же в докер контейнере, убедитесь что в папке с проектом есть .env файл с переменными окружения
+Пример .example.env
+
+## Запуск проекта локально(не рекомендуется)
 
 ```bash
 # development
@@ -17,7 +26,7 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Runnning the app in docker container
+## Запуск проекта в докер контейнере
 
 Запуск проекта с ребилдом контейнера в случае добавления новых зависимостей
 Иначе запускать без флага --build
@@ -38,7 +47,7 @@ docker compose down -v
 docker compose restart
 ```
 
-## Inspect current db
+## Открыть базу данных в GUI
 
 Открыть текущую базу данных в drizzle studio
 
@@ -48,7 +57,7 @@ npm run inspect:db
 
 Drizzle Studio будет доступно здесь [LINK](https://local.drizzle.studio)
 
-## Migration
+## Миграции
 
 Создать миграции на основе описанных схем в modules/drizzle/shema.ts
 
@@ -62,11 +71,11 @@ npm run migration:generate
 npm run migration:migrate
 ```
 
-## Swagger documentation
+## Документация swagger
 
 Эндпоинты доступны по [ссылке](http://localhost:4002/api-docs)
 
-## Test
+## Тесты
 
 ```bash
 # unit tests
