@@ -6,7 +6,6 @@ import {
   HttpCode,
   HttpStatus,
   Param,
-  ParseIntPipe,
   Post,
   Put,
   UsePipes,
@@ -27,7 +26,7 @@ export class BooksController {
 
   @HttpCode(HttpStatus.OK)
   @Get(':id')
-  async getBookByID(@Param(ParseIntPipe) id: number) {
+  async getBookByID(@Param('id') id: number) {
     return this.booksService.getByID(id);
   }
 
@@ -45,7 +44,7 @@ export class BooksController {
   @HttpCode(HttpStatus.OK)
   @Put(':id')
   async updateBookByID(
-    @Param('id', ParseIntPipe) id: number,
+    @Param('id') id: number,
     @Body() bookDTO: BookUpdatingDTO,
   ) {
     return this.booksService.updateBookByID(id, bookDTO);
@@ -53,7 +52,7 @@ export class BooksController {
 
   @HttpCode(HttpStatus.NO_CONTENT)
   @Delete(':id')
-  async deleteBookByID(@Param('id', ParseIntPipe) id: number) {
+  async deleteBookByID(@Param('id') id: number) {
     return this.booksService.deleteByID(id);
   }
 }
