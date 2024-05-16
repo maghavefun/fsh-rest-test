@@ -62,6 +62,10 @@ npm run migration:generate
 npm run migration:migrate
 ```
 
+## Swagger documentation
+
+Эндпоинты доступны по [ссылке](http://localhost:4002/api-docs)
+
 ## Test
 
 ```bash
